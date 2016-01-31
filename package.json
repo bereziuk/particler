@@ -2,8 +2,9 @@
   "name": "particler",
   "version": "0.1.0",
   "description": "JavaScript library for creating particles animation",
-  @"main": "index.js",
+  "main": "index.js",
   "scripts": {
+    "build": "tsc index.ts",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -11,7 +12,7 @@
     "url": "git+https://github.com/bereziuk/particler.git"
   },
   "author": "bereziuk",
-   "keywords": [
+  "keywords": [
     "typescript",
     "canvas"
   ],
