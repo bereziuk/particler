@@ -1,0 +1,19 @@
+{
+  "name": "particler",
+  "version": "0.1.0",
+  "description": "JavaScript library for creating particles animation",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bereziuk/particler.git"
+  },
+  "author": "bereziuk",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/bereziuk/particler/issues"
+  },
+  "homepage": "https://github.com/bereziuk/particler#readme"
+}
