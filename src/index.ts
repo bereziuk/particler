@@ -44,25 +44,24 @@ class Molecules implements IMolecules {
     generateDotsArray;
 
     constructor(id: string, settings: any) {
-        var self = this;
 
-        self.wrapperId = id;
-        self.wrapper = document.getElementById(self.wrapperId);
-        self.canvas = self.wrapper.getContext("2d");
+        this.wrapperId = id;
+        this.wrapper = document.getElementById(this.wrapperId);
+        this.canvas = this.wrapper.getContext("2d");
 
         if (settings !== undefined) {
             (() => {
                 var item: any;
 
                 for (item in settings) {
-                    if (settings.hasOwnProperty(item) && self.config.dots[item] !== undefined) {
-                        self.config.dots[item] = settings[item];
+                    if (settings.hasOwnProperty(item) && this.config.dots[item] !== undefined) {
+                        this.config.dots[item] = settings[item];
                     }
                 }
             })();
         }
 
-        self.createDot = (i: any, arr: any) => {
+        createDot(i: any, arr: any): void {
             var size,
                 vx,
                 vy,
@@ -72,12 +71,12 @@ class Molecules implements IMolecules {
                 rads = angle * Math.PI / 180;
 
             // setting size and position
-            size = Math.floor(Math.random() * (self.config.dots.maxSize - self.config.dots.minSize + 1) + self.config.dots.minSize);
-            posX = Math.random() * self.wrapper.offsetWidth;
-            posY = Math.random() * self.wrapper.offsetHeight;
+            size = Math.floor(Math.random() * (this.config.dots.maxSize - this.config.dots.minSize + 1) + this.config.dots.minSize);
+            posX = Math.random() * this.wrapper.offsetWidth;
+            posY = Math.random() * this.wrapper.offsetHeight;
 
-            vx = Math.cos(rads) * (self.config.dots.speed / self.config.dots.frameDuration);
-            vy = Math.sin(rads) * (self.config.dots.speed / self.config.dots.frameDuration);
+            vx = Math.cos(rads) * (this.config.dots.speed / this.config.dots.frameDuration);
+            vy = Math.sin(rads) * (this.config.dots.speed / this.config.dots.frameDuration);
 
             // setting dot coordinates
             arr[i] = {
@@ -87,11 +86,11 @@ class Molecules implements IMolecules {
                 vx: vx,
                 vy: vy
             };
-        };
+        }
 
-        self.drawDots = () => {
+        drawDots() {
             var i,
-                j = self.config.dots.quantity,
+                j = this.config.dots.quantity,
                 k,
                 el,
                 getDistance = (x1: number, y1: number, x2: number, y2: number) => {
@@ -100,76 +99,76 @@ class Molecules implements IMolecules {
 
             for (i = 0; i < j; i++) {
                 // define dots positions
-                el = self.dotsArray[i];
+                el = this.dotsArray[i];
                 el.posX += el.vx;
 
-                if (el.posX < 0 || el.posX > self.wrapper.offsetWidth) {
+                if (el.posX < 0 || el.posX > this.wrapper.offsetWidth) {
                     if (el.posX < 0) {
                         el.posX = 0;
                     } else {
-                        el.posX = self.wrapper.offsetWidth;
+                        el.posX = this.wrapper.offsetWidth;
                     }
 
                     el.vx = -el.vx;
                 }
 
                 el.posY += el.vy;
-                if (el.posY < 0 || el.posY > self.wrapper.offsetHeight) {
+                if (el.posY < 0 || el.posY > this.wrapper.offsetHeight) {
                     el.vy = -el.vy;
                 }
 
                 // draw dots
-                self.canvas.beginPath();
-                self.canvas.fillStyle = self.config.dots.fillColor;
-                self.canvas.arc(el.posX, el.posY, el.size, 0, 2 * Math.PI);
+                this.canvas.beginPath();
+                this.canvas.fillStyle = this.config.dots.fillColor;
+                this.canvas.arc(el.posX, el.posY, el.size, 0, 2 * Math.PI);
 
                 // draw lines between dots
                 for (k = 0; k < j; k++) {
                     if (k !== i) {
 
-                        self.canvas.lineWidth = self.config.dots.lineWidth;
-                        self.canvas.strokeStyle = self.config.dots.fillColor;
-                        self.canvas.moveTo(el.posX, el.posY);
+                        this.canvas.lineWidth = this.config.dots.lineWidth;
+                        this.canvas.strokeStyle = this.config.dots.fillColor;
+                        this.canvas.moveTo(el.posX, el.posY);
 
-                        if (getDistance(el.posX, el.posY, self.dotsArray[k].posX, self.dotsArray[k].posY) < self.config.dots.minimalLineLength) {
-                            self.canvas.lineTo(self.dotsArray[k].posX, self.dotsArray[k].posY);
-                            self.canvas.stroke();
+                        if (getDistance(el.posX, el.posY, this.dotsArray[k].posX, this.dotsArray[k].posY) < this.config.dots.minimalLineLength) {
+                            this.canvas.lineTo(this.dotsArray[k].posX, this.dotsArray[k].posY);
+                            this.canvas.stroke();
                         }
                     }
                 }
-                self.canvas.fill();
+                this.canvas.fill();
             }
 
-            self.canvas.fillStyle = self.config.dots.fillColor;
+            this.canvas.fillStyle = this.config.dots.fillColor;
 
             setTimeout(() => {
-                self.canvas.clearRect(0, 0, self.wrapper.width, self.wrapper.height);
-                self.drawDots();
-            }, self.config.dots.frameDuration);
-        };
+                this.canvas.clearRect(0, 0, this.wrapper.width, this.wrapper.height);
+                this.drawDots();
+            }, this.config.dots.frameDuration);
+        }
 
         generateDotsArray:() => {
             var i = 0;
 
-            for (i; i < self.config.dots.quantity; i++) {
-                self.createDot(i, self.dotsArray);
+            for (i; i < this.config.dots.quantity; i++) {
+                this.createDot(i, this.dotsArray);
             }
 
             drawDots();
         }
 
-        private setWrapperSize() => {
-            self.canvas.canvas.width = self.wrapper.offsetWidth;
-            self.canvas.canvas.height = self.wrapper.offsetHeight;
+        setWrapperSize() {
+            this.canvas.canvas.width = this.wrapper.offsetWidth;
+            this.canvas.canvas.height = this.wrapper.offsetHeight;
         }
 
-        resizingHandler: void () => {
+        resizingHandler(): void {
             window.addEventListener('resize',() => {
                 setWrapperSize();
             });
         }
 
-        private init: void () => {
+        init(): void {
             setWrapperSize();
             generateDotsArray();
             resizingHandler();
