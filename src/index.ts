@@ -8,6 +8,7 @@ interface IParticlerConfig {
     speed: number;
     framesPerSecond: number;
     frameDuration: number;
+    backgroundColor: string;
 }
 
 interface IParticlerCustomConfig {
@@ -20,6 +21,7 @@ interface IParticlerCustomConfig {
     speed?: number;
     framesPerSecond?: number;
     frameDuration?: number;
+    backgroundColor?: string;
 }
 
 interface iDot {
@@ -48,6 +50,7 @@ class ParticlerDefaultConfig implements IParticlerConfig {
     speed = 25;
     framesPerSecond = 60;
     frameDuration = 20;
+    backgroundColor = "transparent";
 }
 
 class Particler implements IParticler {
@@ -60,11 +63,12 @@ class Particler implements IParticler {
         this.wrapper = <HTMLCanvasElement> document.getElementById(wrapperId);
         this.canvas = <CanvasRenderingContext2D> this.wrapper.getContext("2d");
         this.setConfig(customConfig);
+        this.wrapper.style.backgroundColor = this.config.backgroundColor;
         this.setWrapperSize();
         this.generateDotsArray();
         this.resizingHandler();
     }
-    
+
     setConfig(customConfig: IParticlerCustomConfig): void {
         if (customConfig !== undefined) {
             (() => {
@@ -84,11 +88,11 @@ class Particler implements IParticler {
         let vx;
         let vy;
         let posX;
-        let  posY;
-        let  angle = Math.random() * 360;
-        let  rads = angle * Math.PI / 180;
+        let posY;
+        let angle = Math.random() * 360;
+        let rads = angle * Math.PI / 180;
 
-        // setting size and position
+        // set radom size and position
         size = Math.floor(Math.random() * (this.config.maxSize - this.config.minSize + 1) + this.config.minSize);
         posX = Math.random() * this.wrapper.offsetWidth;
         posY = Math.random() * this.wrapper.offsetHeight;
@@ -96,7 +100,6 @@ class Particler implements IParticler {
         vx = Math.cos(rads) * (this.config.speed / this.config.frameDuration);
         vy = Math.sin(rads) * (this.config.speed / this.config.frameDuration);
 
-        // setting dot coordinates
         arr[i] = {
             size: size,
             posX: posX,
@@ -107,11 +110,11 @@ class Particler implements IParticler {
     }
 
     drawDots(): void {
-        var i,
-            j = this.config.quantity,
-            k,
-            el,
-            getDistance = (x1: number, y1: number, x2: number, y2: number) => {
+        let i;
+        let j = this.config.quantity;
+        let k;
+        let el;
+        let getDistance = (x1: number, y1: number, x2: number, y2: number) => {
                 return Math.sqrt(Math.pow((x1 - x2), 2) + Math.pow((y1 - y2), 2));
             };
 

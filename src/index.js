@@ -9,6 +9,7 @@ var ParticlerDefaultConfig = (function () {
         this.speed = 25;
         this.framesPerSecond = 60;
         this.frameDuration = 20;
+        this.backgroundColor = "transparent";
     }
     return ParticlerDefaultConfig;
 })();
@@ -20,6 +21,7 @@ var Particler = (function () {
         this.wrapper = document.getElementById(wrapperId);
         this.canvas = this.wrapper.getContext("2d");
         this.setConfig(customConfig);
+        this.wrapper.style.backgroundColor = this.config.backgroundColor;
         this.setWrapperSize();
         this.generateDotsArray();
         this.resizingHandler();
@@ -46,13 +48,12 @@ var Particler = (function () {
         var posY;
         var angle = Math.random() * 360;
         var rads = angle * Math.PI / 180;
-        // setting size and position
+        // set radom size and position
         size = Math.floor(Math.random() * (this.config.maxSize - this.config.minSize + 1) + this.config.minSize);
         posX = Math.random() * this.wrapper.offsetWidth;
         posY = Math.random() * this.wrapper.offsetHeight;
         vx = Math.cos(rads) * (this.config.speed / this.config.frameDuration);
         vy = Math.sin(rads) * (this.config.speed / this.config.frameDuration);
-        // setting dot coordinates
         arr[i] = {
             size: size,
             posX: posX,
@@ -63,7 +64,11 @@ var Particler = (function () {
     };
     Particler.prototype.drawDots = function () {
         var _this = this;
-        var i, j = this.config.quantity, k, el, getDistance = function (x1, y1, x2, y2) {
+        var i;
+        var j = this.config.quantity;
+        var k;
+        var el;
+        var getDistance = function (x1, y1, x2, y2) {
             return Math.sqrt(Math.pow((x1 - x2), 2) + Math.pow((y1 - y2), 2));
         };
         for (i = 0; i < j; i++) {

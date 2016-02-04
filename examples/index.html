@@ -1,0 +1,53 @@
+﻿<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>Particler - lightweight JavaScript canvas animation library</title>
+    <script src="../src/index.js"></script>
+    <style type="text/css">
+        body {
+            font-family: Arial, Helvetica, sans-serif
+        }
+
+        .molecules__wrapper {
+            width: 100%;
+            height: 400px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Particler - lightweight JavaScript canvas animation library</h1>
+    
+    <h2>Example 1 - default config</h2>
+    <canvas id="first" class="molecules__wrapper"></canvas>
+    
+    <h2>Example 2 - custom config</h2>
+    <canvas id="second" class="molecules__wrapper"></canvas>
+    
+    <h2>Example 3 - custom config with background color</h2>
+    <canvas id="third" class="molecules__wrapper"></canvas>
+
+    <script type="text/javascript">
+        var firstParticlerExample = new Particler("first");
+
+        var secondParticlerExample = new Particler("second", {
+            quantity: 50,
+            lineWidth: 2,
+            fillColor: "black",
+            minSize: 3,
+            maxSize: 8,
+            minimalLineLength: 50,
+            speed: 40,
+        });
+
+        var thirdParticlerExample = new Particler("third", {
+            fillColor: "#d3c1af",
+            backgroundColor: "#2c3e50"
+        });
+    </script>
+</body>
+</html>
+
+
+
