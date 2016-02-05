@@ -2,7 +2,7 @@
   "name": "particler",
   "version": "0.1.1",
   "description": "JavaScript library for creating particles animation",
-  "main": "src/index.js",
+  "main": "dist/particler.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },

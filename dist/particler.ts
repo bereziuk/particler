@@ -6,7 +6,6 @@ interface IParticlerConfig {
     maxSize: number;
     minimalLineLength: number;
     speed: number;
-    framesPerSecond: number;
     frameDuration: number;
     backgroundColor: string;
 }
@@ -19,7 +18,6 @@ interface IParticlerCustomConfig {
     maxSize?: number;
     minimalLineLength?: number;
     speed?: number;
-    framesPerSecond?: number;
     frameDuration?: number;
     backgroundColor?: string;
 }
@@ -48,7 +46,6 @@ class ParticlerDefaultConfig implements IParticlerConfig {
     maxSize = 3;
     minimalLineLength = 250;
     speed = 25;
-    framesPerSecond = 60;
     frameDuration = 20;
     backgroundColor = "transparent";
 }
@@ -60,8 +57,8 @@ class Particler implements IParticler {
     dotsArray: Array<IDot> = [];
 
     constructor(public wrapperId: string, customConfig?: IParticlerCustomConfig) {
-        this.wrapper = <HTMLCanvasElement> document.getElementById(wrapperId);
-        this.canvas = <CanvasRenderingContext2D> this.wrapper.getContext("2d");
+        this.wrapper = <HTMLCanvasElement>document.getElementById(wrapperId);
+        this.canvas = <CanvasRenderingContext2D>this.wrapper.getContext("2d");
         this.setConfig(customConfig);
         this.wrapper.style.backgroundColor = this.config.backgroundColor;
         this.setWrapperSize();
@@ -115,8 +112,8 @@ class Particler implements IParticler {
         let k;
         let el;
         let getDistance = (x1: number, y1: number, x2: number, y2: number) => {
-                return Math.sqrt(Math.pow((x1 - x2), 2) + Math.pow((y1 - y2), 2));
-            };
+            return Math.sqrt(Math.pow((x1 - x2), 2) + Math.pow((y1 - y2), 2));
+        };
 
         for (i = 0; i < j; i++) {
             // define dots positions
@@ -184,7 +181,7 @@ class Particler implements IParticler {
     }
 
     resizingHandler(): void {
-        window.addEventListener('resize',() => {
+        window.addEventListener('resize', () => {
             this.setWrapperSize();
         });
     }
