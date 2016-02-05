@@ -8,9 +8,7 @@ Lightweight JavaScript canvas animation library for particles animation.
 * See [examples](http://bereziuk.com/particler.html)
  
  
-## Usage
-
-### Npm package
+## Installation
 
 ```
 npm install particler --save
@@ -32,18 +30,21 @@ npm install particler --save
 	};
     
     // create particler instance
-    var particlerExample = new Particler("first", particlerOptions);
+    var particlerExample = new Particler("particler-instance", particlerOptions);
 </script>
 ```
 
-### Configuration
+## Configuration
 
 prop        | type   | notes
 ----------- |------- | ----------
-pin         | string | the id of the Pin to `repin`
-media       | string | the image url of the Pin to create
-url         | string | the link back of the Pin to create
-description | string | the description of the Pin to create
-
-
- 
+backgroundColor | string | Canvas background color
+fillColor   | string | Dots and lines color
+frameDuration | number | Amount of frames rendered per second
+framesPerSecond | number | Amount of frames rendered per second
+lineWidth   | number | Width of lines
+minimalLineLength | number | Minimal distance between dots occures connecting line drawing
+minSize     | number | Minimal dot size
+maxSize     | number | Maximal dot size
+quantity    | number | Amount of dots
+speed       | number | Dots speed
