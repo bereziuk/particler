@@ -16,6 +16,7 @@ npm install particler --save
 ```html
 <!-- create canvas tag -->
 <canvas id="particler-instance"></canvas>
+<!-- define proper styles if needed -->
 
 <!-- include particler.js library -->
 <script src="node_modules/particler/dist/particler.js"></script>

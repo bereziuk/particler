@@ -7,6 +7,6 @@
     "outDir": "dist"
   },
   "files": [
-    "src/example.ts"
+    "dist/particler.ts"
   ]
 }

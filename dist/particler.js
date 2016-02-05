@@ -7,7 +7,6 @@ var ParticlerDefaultConfig = (function () {
         this.maxSize = 3;
         this.minimalLineLength = 250;
         this.speed = 25;
-        this.framesPerSecond = 60;
         this.frameDuration = 20;
         this.backgroundColor = "transparent";
     }

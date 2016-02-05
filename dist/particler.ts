@@ -38,7 +38,7 @@ interface IParticler {
     dotsArray: Array<IDot>;
 }
 
-class ParticlerDefaultConfig implements IParticlerConfig {
+class ParticlerDefaultConfig2 implements IParticlerConfig {
     quantity = 20;
     lineWidth = 0.05;
     fillColor = "#000000";
@@ -81,13 +81,13 @@ class Particler implements IParticler {
     };
 
     createDot(i: number, arr: Array<IDot>): void {
-        let size;
-        let vx;
-        let vy;
-        let posX;
-        let posY;
-        let angle = Math.random() * 360;
-        let rads = angle * Math.PI / 180;
+        let size: number;
+        let vx: number;
+        let vy: number;
+        let posX: number;
+        let posY: number;
+        let angle: number = Math.random() * 360;
+        let rads: number = angle * Math.PI / 180;
 
         // set radom size and position
         size = Math.floor(Math.random() * (this.config.maxSize - this.config.minSize + 1) + this.config.minSize);
@@ -107,11 +107,11 @@ class Particler implements IParticler {
     }
 
     drawDots(): void {
-        let i;
+        let i: number;
         let j = this.config.quantity;
-        let k;
-        let el;
-        let getDistance = (x1: number, y1: number, x2: number, y2: number) => {
+        let k: number;
+        let el: IDot;
+        let getDistance = (x1: number, y1: number, x2: number, y2: number): number => {
             return Math.sqrt(Math.pow((x1 - x2), 2) + Math.pow((y1 - y2), 2));
         };
 
