@@ -24,7 +24,7 @@ interface IParticlerCustomConfig {
     backgroundColor?: string;
 }
 
-interface iDot {
+interface IDot {
     size: number;
     posX: number;
     posY: number;
@@ -37,7 +37,7 @@ interface IParticler {
     wrapper: HTMLCanvasElement;
     canvas: CanvasRenderingContext2D;
     config: IParticlerConfig;
-    dotsArray: Array<iDot>;
+    dotsArray: Array<IDot>;
 }
 
 class ParticlerDefaultConfig implements IParticlerConfig {
@@ -57,7 +57,7 @@ class Particler implements IParticler {
     wrapper: HTMLCanvasElement;
     canvas: CanvasRenderingContext2D;
     config: IParticlerConfig = new ParticlerDefaultConfig();
-    dotsArray: Array<iDot> = [];
+    dotsArray: Array<IDot> = [];
 
     constructor(public wrapperId: string, customConfig?: IParticlerCustomConfig) {
         this.wrapper = <HTMLCanvasElement> document.getElementById(wrapperId);
@@ -83,7 +83,7 @@ class Particler implements IParticler {
         }
     };
 
-    createDot(i: any, arr: any): void {
+    createDot(i: number, arr: Array<IDot>): void {
         let size;
         let vx;
         let vy;
@@ -169,7 +169,7 @@ class Particler implements IParticler {
     }
 
     generateDotsArray(): void {
-        var i = 0;
+        var i: number = 0;
 
         for (i; i < this.config.quantity; i++) {
             this.createDot(i, this.dotsArray);
