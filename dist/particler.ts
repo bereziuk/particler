@@ -38,7 +38,7 @@ interface IParticler {
     dotsArray: Array<IDot>;
 }
 
-class ParticlerDefaultConfig2 implements IParticlerConfig {
+class ParticlerDefaultConfig implements IParticlerConfig {
     quantity = 20;
     lineWidth = 0.05;
     fillColor = "#000000";
