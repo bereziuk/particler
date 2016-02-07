@@ -1,6 +1,6 @@
 {
   "name": "particler",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "JavaScript library for creating particles animation",
   "main": "dist/particler.js",
   "scripts": {
