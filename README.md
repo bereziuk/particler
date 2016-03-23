@@ -4,7 +4,6 @@ Lightweight JavaScript canvas animation library for particles animation.
 
 * Inspired by [https://github.com/VincentGarreau/particles.js](https://github.com/VincentGarreau/particles.js)
 * Written in TypeScript
-* Also available as [React component](https://github.com/bereziuk/react-particler)
 * See [examples on website](http://bereziuk.com/particler.html) or in `examples/index.html`
 
 ## Installation
